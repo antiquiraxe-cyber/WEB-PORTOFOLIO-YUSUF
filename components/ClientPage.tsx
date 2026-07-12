@@ -553,28 +553,18 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
 
       {selectedGallery && (
         <div 
-          style={{
-            position: 'fixed',
-            top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.95)',
-            zIndex: 99999,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '20px'
-          }}
+          className="gallery-modal"
           onClick={() => setSelectedGallery(null)}
         >
           <button 
-            style={{ position: 'absolute', top: '20px', right: '30px', color: 'var(--accent-retro)', background: 'transparent', border: 'none', fontSize: '2rem', cursor: 'pointer', fontFamily: '"Space Mono", monospace', zIndex: 100000 }}
+            className="gallery-close-btn"
             onClick={() => setSelectedGallery(null)}
           >
             [X] CLOSE
           </button>
-          
           {selectedGallery.images.length > 1 && (
             <button
-              style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', color: 'var(--accent-retro)', background: 'transparent', border: '2px solid var(--accent-retro)', padding: '10px 20px', fontSize: '2rem', cursor: 'pointer', fontFamily: '"Space Mono", monospace', zIndex: 100000 }}
+              className="gallery-nav-btn prev"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedGallery(prev => prev ? { ...prev, currentIndex: (prev.currentIndex - 1 + prev.images.length) % prev.images.length } : null);
@@ -587,19 +577,13 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
           <img 
             src={selectedGallery.images[selectedGallery.currentIndex]} 
             alt="Enlarged view" 
-            style={{ 
-              maxWidth: '80%', 
-              maxHeight: '85vh', 
-              objectFit: 'contain', 
-              border: '2px solid var(--accent-retro)', 
-              boxShadow: '8px 8px 0px var(--accent-retro)' 
-            }} 
+            className="gallery-image"
             onClick={(e) => e.stopPropagation()}
           />
 
           {selectedGallery.images.length > 1 && (
             <button
-              style={{ position: 'absolute', right: '20px', top: '50%', transform: 'translateY(-50%)', color: 'var(--accent-retro)', background: 'transparent', border: '2px solid var(--accent-retro)', padding: '10px 20px', fontSize: '2rem', cursor: 'pointer', fontFamily: '"Space Mono", monospace', zIndex: 100000 }}
+              className="gallery-nav-btn next"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedGallery(prev => prev ? { ...prev, currentIndex: (prev.currentIndex + 1) % prev.images.length } : null);
