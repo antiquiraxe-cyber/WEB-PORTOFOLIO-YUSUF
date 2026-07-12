@@ -1,8 +1,10 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function CustomCursor() {
+  const [isDesktop, setIsDesktop] = useState(true)
+
   const trailerRef = useRef<HTMLDivElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
   const hLineRef = useRef<HTMLDivElement>(null)
@@ -15,6 +17,14 @@ export default function CustomCursor() {
   const hoveredElRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
+    // Check if device supports hover
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
+    setIsDesktop(mediaQuery.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mediaQuery.addEventListener("change", handler)
+    
+    if (!mediaQuery.matches) return;
+
     // Hide default cursor
     const style = document.createElement("style")
     style.innerHTML = `
@@ -94,10 +104,13 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("mouseover", handleMouseOver)
       window.removeEventListener("mouseout", handleMouseOut)
+      mediaQuery.removeEventListener("change", handler)
       if (requestRef.current) cancelAnimationFrame(requestRef.current)
-      document.head.removeChild(style)
+      if (document.head.contains(style)) document.head.removeChild(style)
     }
   }, [])
+
+  if (!isDesktop) return null;
 
   return (
     <>

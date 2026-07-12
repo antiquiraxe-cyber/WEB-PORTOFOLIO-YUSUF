@@ -373,6 +373,10 @@ header {
   filter: grayscale(0%) contrast(100%);
 }
 
+.hero-image-container {
+  height: 500px;
+}
+
 .stats-bar {
   border: 2px solid var(--border-color);
   display: flex;
@@ -834,6 +838,10 @@ footer {
     padding: 15px;
   }
 
+  .hero-image-container {
+    height: 400px;
+  }
+
   .logo {
     font-size: 1.2rem;
   }
@@ -1080,6 +1088,10 @@ footer {
 
   .section-title {
     font-size: 1.5rem;
+  }
+
+  .hero-image-container {
+    height: 300px;
   }
 
   .marquee-text {

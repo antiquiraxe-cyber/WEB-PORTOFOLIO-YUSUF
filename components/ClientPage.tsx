@@ -223,7 +223,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                 </button>
               </div>
             </div>
-            <div style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '500px' }}>
+            <div className="hero-image-container" style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
               <div 
                 style={{ 
                   display: 'flex', 
@@ -234,7 +234,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                 }}
               >
                 {heroImages.map((src, i) => (
-                  <img key={i} src={src} alt={`Professional Portrait ${i+1}`} className="hero-image" style={{ flex: '0 0 100%', minWidth: '100%', objectFit: 'cover' }} />
+                  <img key={i} src={src} alt={`Professional Portrait ${i+1}`} className="hero-image" style={{ flex: '0 0 100%', minWidth: '100%', height: '100%', objectFit: 'cover' }} />
                 ))}
               </div>
               <button 
