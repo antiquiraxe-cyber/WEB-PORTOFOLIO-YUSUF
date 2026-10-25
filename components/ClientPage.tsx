@@ -396,7 +396,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
       <div className="container">
         {/* Terminal Section */}
         <section className="terminal-section" id="lab" style={{ display: 'flex', flexDirection: 'column', height: '400px', paddingBottom: '20px' }}>
-          <div className="terminal-header" style={{ position: 'sticky', top: 0, backgroundColor: 'var(--surface)', zIndex: 10, paddingBottom: '10px' }}>SYSTEM_CONSOLE.EXE</div>
+          <div className="terminal-header">SYSTEM_CONSOLE.EXE</div>
           <div 
             ref={terminalContainerRef}
             onClick={() => terminalInputRef.current?.focus()}
@@ -418,7 +418,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                 type="text" 
                 value={terminalInput}
                 onChange={(e) => setTerminalInput(e.target.value)}
-                style={{ background: 'transparent', border: 'none', color: 'white', flex: 1, fontFamily: 'inherit', outline: 'none', marginLeft: '10px' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', flex: 1, fontFamily: 'inherit', outline: 'none', marginLeft: '10px' }}
                 autoComplete="off"
                 spellCheck="false"
                 placeholder="Type 'help'..."
@@ -426,10 +426,10 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
               <button 
                 type="submit" 
                 style={{ 
-                  background: 'var(--text-secondary)', 
-                  color: 'var(--surface)', 
+                  background: 'var(--text-primary)', 
+                  color: '#ffffff', 
                   border: 'none', 
-                  padding: '2px 8px', 
+                  padding: '4px 12px', 
                   marginLeft: '10px',
                   cursor: 'pointer',
                   fontFamily: 'inherit',
