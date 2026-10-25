@@ -120,14 +120,13 @@ export default function CustomCursor() {
         style={{
           position: "fixed",
           top: 0, left: 0,
-          width: "8px", height: "8px",
+          width: "6px", height: "6px",
           backgroundColor: "var(--accent-retro)",
           borderRadius: "0",
           pointerEvents: "none",
           zIndex: 999999,
           transform: `translate(-100px, -100px)`,
-          willChange: "transform",
-          boxShadow: "0 0 5px var(--accent-retro)"
+          willChange: "transform"
         }}
       />
       {/* Large trailing / locking block */}
@@ -142,7 +141,7 @@ export default function CustomCursor() {
           pointerEvents: "none",
           zIndex: 999998,
           willChange: "transform, width, height",
-          boxShadow: "0 0 10px var(--accent-retro) inset, 0 0 10px var(--accent-retro)"
+          boxShadow: "3px 3px 0px rgba(17, 17, 17, 0.15)"
         }}
       />
       {/* Horizontal Crosshair Line */}
@@ -153,7 +152,7 @@ export default function CustomCursor() {
           top: 0, left: 0,
           width: "100vw", height: "1px",
           backgroundColor: "var(--accent-retro)",
-          opacity: 0.3,
+          opacity: 0.15,
           pointerEvents: "none",
           zIndex: 999997,
           transform: `translateY(-100px)`,
@@ -168,7 +167,7 @@ export default function CustomCursor() {
           top: 0, left: 0,
           width: "1px", height: "100vh",
           backgroundColor: "var(--accent-retro)",
-          opacity: 0.3,
+          opacity: 0.15,
           pointerEvents: "none",
           zIndex: 999997,
           transform: `translateX(-100px)`,

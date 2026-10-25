@@ -39,14 +39,15 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* Added retro portfolio theme variables */
-  --bg-color: #0d0d0d;
-  --surface: #1a1a1a;
-  --accent-retro: #ffffff;
-  --text-primary: #ffffff;
-  --text-secondary: #999999;
-  --border-color: #333333;
-  --retro-shadow: 4px 4px 0px #ffffff;
+  /* Added retro portfolio theme variables - GAZU Editorial Palette */
+  --bg-color: #e8e7e3;
+  --surface: #ffffff;
+  --surface-dark: #111111;
+  --accent-retro: #111111;
+  --text-primary: #111111;
+  --text-secondary: #686763;
+  --border-color: #111111;
+  --retro-shadow: 4px 4px 0px #111111;
 }
 
 
@@ -141,18 +142,17 @@
     color: var(--text-primary) !important;
     font-family: "Space Mono", monospace !important;
     overflow-x: hidden;
-    background-image: radial-gradient(circle, rgb(51, 51, 51) 1px, transparent 1px);
-    background-size: 30px 30px;
+    background-image: radial-gradient(circle, #c5c4bf 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
-  /* CRT scanline effect overlay */
+  /* Editorial subtle texture overlay */
   body::before {
     content: " ";
     display: block;
     position: fixed;
     inset: 0px;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%) 0% 0% / 100% 4px,
-      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)) 0% 0% / 3px 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.03) 50%) 0% 0% / 100% 4px;
     z-index: 9999;
     pointer-events: none;
   }
@@ -169,7 +169,7 @@
 
 header {
   border-bottom: 2px solid var(--border-color);
-  background: var(--surface);
+  background: var(--bg-color);
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
@@ -359,6 +359,7 @@ header {
   padding: 30px;
   margin-bottom: 100px;
   background: var(--surface);
+  box-shadow: var(--retro-shadow);
 }
 
 .stat-item {
@@ -412,12 +413,13 @@ header {
   border: 2px solid var(--border-color);
   background: var(--surface);
   transition: 0.3s;
+  box-shadow: 4px 4px 0px var(--border-color);
 }
 
 .project-card:hover {
-  border-color: var(--accent-retro);
+  border-color: var(--border-color);
   transform: translateY(-5px);
-  box-shadow: 8px 8px 0px var(--accent-retro);
+  box-shadow: 8px 8px 0px var(--border-color);
 }
 
 .project-img {
@@ -453,10 +455,10 @@ header {
 .marquee-container {
   border-top: 2px solid var(--border-color);
   border-bottom: 2px solid var(--border-color);
-  padding: 20px 0;
+  padding: 24px 0;
   overflow: hidden;
-  background: var(--accent-retro);
-  color: var(--bg-color);
+  background: #111111;
+  color: #e8e7e3;
   margin-bottom: 100px;
 }
 
@@ -473,12 +475,12 @@ header {
 
 .badge-tech {
   display: inline-block;
-  padding: 5px 15px;
-  background: var(--surface) !important;
-  color: var(--text-primary) !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
-  border: 2px solid var(--text-primary) !important;
-  box-shadow: 4px 4px 0px var(--bg-color) !important;
+  padding: 6px 16px;
+  background: #ffffff !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.25) !important;
   font-family: "Space Mono", monospace !important;
   font-weight: bold !important;
   margin: 0 10px;
@@ -499,11 +501,13 @@ header {
 }
 
 .terminal-section {
-  background: rgb(0, 0, 0);
+  background: #111111;
   border: 2px solid var(--border-color);
+  box-shadow: 6px 6px 0px var(--border-color);
   padding: 40px;
   margin-bottom: 100px;
   position: relative;
+  color: #ffffff;
 }
 
 .terminal-header {
@@ -513,7 +517,8 @@ header {
   background: var(--bg-color);
   padding: 0 10px;
   font-size: 0.8rem;
-  color: var(--accent-retro);
+  color: var(--text-primary);
+  font-weight: bold;
 }
 
 .terminal-row {
@@ -551,19 +556,22 @@ footer {
 
 .btn-retro {
   display: inline-block;
-  background: var(--accent-retro);
-  color: var(--bg-color);
-  padding: 15px 30px;
+  background: var(--text-primary);
+  color: #ffffff;
+  padding: 14px 28px;
   font-weight: 700;
   text-decoration: none;
   border: 2px solid var(--text-primary);
-  box-shadow: 4px 4px 0px var(--text-primary);
+  box-shadow: 4px 4px 0px #c5c4bf;
   transition: 0.2s;
+  letter-spacing: 0.5px;
 }
 
 .btn-retro:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px var(--text-primary);
+  background: #ffffff;
+  color: var(--text-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text-primary);
 }
 
 .copyright {
@@ -630,13 +638,13 @@ footer {
   z-index: 1000;
   width: 50px;
   height: 50px;
-  background: var(--accent-retro);
+  background: var(--text-primary);
   border: 2px solid var(--text-primary);
-  color: var(--bg-color);
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 4px 4px 0px var(--text-primary);
+  box-shadow: 4px 4px 0px #c5c4bf;
   transition: all 0.3s;
   display: flex;
   align-items: center;
@@ -645,6 +653,8 @@ footer {
 }
 
 .scroll-to-top:hover {
+  background: #ffffff;
+  color: var(--text-primary);
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0px var(--text-primary);
 }
@@ -685,8 +695,8 @@ footer {
 
 .dossier-panel-blueprint {
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -722,7 +732,7 @@ footer {
 }
 
 .dossier-row:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .dossier-row:last-child {
@@ -817,7 +827,7 @@ footer {
   position: absolute; 
   top: 20px; 
   right: 30px; 
-  color: var(--accent-retro); 
+  color: #ffffff; 
   background: transparent; 
   border: none; 
   font-size: 2rem; 
@@ -830,9 +840,9 @@ footer {
   position: absolute; 
   top: 50%; 
   transform: translateY(-50%); 
-  color: var(--accent-retro); 
+  color: #ffffff; 
   background: transparent; 
-  border: 2px solid var(--accent-retro); 
+  border: 2px solid #ffffff; 
   padding: 10px 20px; 
   font-size: 2rem; 
   cursor: pointer; 
@@ -850,8 +860,8 @@ footer {
   max-width: 80%; 
   max-height: 85vh; 
   object-fit: contain; 
-  border: 2px solid var(--accent-retro); 
-  box-shadow: 8px 8px 0px var(--accent-retro);
+  border: 2px solid #ffffff; 
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 768px) {

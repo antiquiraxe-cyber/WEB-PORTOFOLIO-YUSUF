@@ -502,15 +502,15 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                 {contactStatus === 'error' && <p style={{ color: 'red' }}>{"> TRANSMISSION_FAILED: Error reaching destination."}</p>}
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                   <span>guest@system:~$</span>
-                  <input type="text" placeholder="Your Name" value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})} style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--accent-retro)', color: 'white', flex: 1, minWidth: '200px', fontFamily: 'inherit', outline: 'none' }} />
+                  <input type="text" placeholder="Your Name" value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})} style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--border-color)', color: 'var(--text-primary)', flex: 1, minWidth: '200px', fontFamily: 'inherit', outline: 'none' }} />
                 </div>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                   <span>guest@system:~$</span>
-                  <input type="email" placeholder="Your Email" value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})} style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--accent-retro)', color: 'white', flex: 1, minWidth: '200px', fontFamily: 'inherit', outline: 'none' }} />
+                  <input type="email" placeholder="Your Email" value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})} style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--border-color)', color: 'var(--text-primary)', flex: 1, minWidth: '200px', fontFamily: 'inherit', outline: 'none' }} />
                 </div>
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                   <span>guest@system:~$</span>
-                  <textarea placeholder="Message Payload" rows={4} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} style={{ background: 'transparent', border: '1px solid var(--accent-retro)', color: 'white', flex: 1, minWidth: '200px', fontFamily: 'inherit', padding: '10px', outline: 'none', resize: 'vertical' }}></textarea>
+                  <textarea placeholder="Message Payload" rows={4} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} style={{ background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-primary)', flex: 1, minWidth: '200px', fontFamily: 'inherit', padding: '10px', outline: 'none', resize: 'vertical' }}></textarea>
                 </div>
                 <button className="btn-retro" style={{ alignSelf: 'flex-start', marginTop: '10px', opacity: contactStatus === 'submitting' ? 0.5 : 1 }} onClick={handleContactSubmit} disabled={contactStatus === 'submitting'}>
                   {contactStatus === 'submitting' ? 'TRANSMITTING...' : 'TRANSMIT_PACKET'}
@@ -582,7 +582,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
             </button>
           )}
           
-          <div style={{ position: 'absolute', bottom: '20px', color: 'var(--accent-retro)', fontFamily: '"Space Mono", monospace' }}>
+          <div style={{ position: 'absolute', bottom: '20px', color: '#ffffff', fontFamily: '"Space Mono", monospace' }}>
             {selectedGallery.currentIndex + 1} / {selectedGallery.images.length}
           </div>
         </div>
