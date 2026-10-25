@@ -817,7 +817,8 @@ footer {
 .gallery-modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.95);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
   z-index: 99999;
   display: flex;
   justify-content: center;
@@ -829,63 +830,78 @@ footer {
   position: absolute; 
   top: 20px; 
   right: 30px; 
-  color: #ffffff; 
+  color: var(--text-primary); 
   background: transparent; 
   border: none; 
-  font-size: 2rem; 
+  font-size: 1.8rem; 
   cursor: pointer; 
   font-family: "Space Mono", monospace; 
+  font-weight: 700;
   z-index: 100000;
+  transition: transform 0.2s;
+}
+.gallery-close-btn:hover {
+  transform: scale(1.05);
 }
 
 .gallery-nav-btn {
   position: absolute; 
   top: 50%; 
   transform: translateY(-50%); 
-  color: #ffffff; 
-  background: transparent; 
-  border: 2px solid #ffffff; 
+  color: var(--text-primary); 
+  background: #ffffff; 
+  border: 2px solid var(--text-primary); 
   padding: 10px 20px; 
   font-size: 2rem; 
   cursor: pointer; 
   font-family: "Space Mono", monospace; 
+  font-weight: 700;
+  box-shadow: 4px 4px 0px var(--text-primary);
   z-index: 100000;
+  transition: all 0.2s;
+}
+.gallery-nav-btn:hover {
+  background: var(--text-primary);
+  color: #ffffff;
+  box-shadow: 2px 2px 0px var(--text-primary);
 }
 .gallery-nav-btn.prev {
-  left: 20px;
+  left: 30px;
 }
 .gallery-nav-btn.next {
-  right: 20px;
+  right: 30px;
 }
 
 .gallery-image {
   max-width: 80%; 
   max-height: 85vh; 
   object-fit: contain; 
-  border: 2px solid #ffffff; 
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--text-primary); 
+  box-shadow: 8px 8px 0px var(--text-primary);
+  background: #ffffff;
 }
 
 @media (max-width: 768px) {
   .gallery-close-btn {
-    top: 10px;
-    right: 15px;
+    top: 15px;
+    right: 20px;
     font-size: 1.2rem;
   }
   .gallery-nav-btn {
-    padding: 5px 10px;
-    font-size: 1.5rem;
+    padding: 6px 12px;
+    font-size: 1.3rem;
+    box-shadow: 2px 2px 0px var(--text-primary);
   }
   .gallery-nav-btn.prev {
-    left: 5px;
+    left: 10px;
   }
   .gallery-nav-btn.next {
-    right: 5px;
+    right: 10px;
   }
   .gallery-image {
     max-width: 90%;
     max-height: 70vh;
-    box-shadow: 4px 4px 0px var(--accent-retro);
+    box-shadow: 4px 4px 0px var(--text-primary);
   }
   .gallery-modal {
     padding: 10px;

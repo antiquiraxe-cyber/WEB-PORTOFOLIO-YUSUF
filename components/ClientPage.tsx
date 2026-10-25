@@ -582,7 +582,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
             </button>
           )}
           
-          <div style={{ position: 'absolute', bottom: '20px', color: '#ffffff', fontFamily: '"Space Mono", monospace' }}>
+          <div style={{ position: 'absolute', bottom: '20px', color: 'var(--text-primary)', fontWeight: 'bold', fontFamily: '"Space Mono", monospace' }}>
             {selectedGallery.currentIndex + 1} / {selectedGallery.images.length}
           </div>
         </div>

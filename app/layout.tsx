@@ -20,6 +20,10 @@ const _syne = Syne({
 export const metadata: Metadata = {
   title: "Sakha Yusuf - Generalist Web Developer",
   description: "Bridging the gap between a blank canvas and a live website.",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 }
 
 import CustomCursor from "@/components/CustomCursor"
