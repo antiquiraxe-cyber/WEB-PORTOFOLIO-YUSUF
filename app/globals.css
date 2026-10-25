@@ -42,38 +42,14 @@
   /* Added retro portfolio theme variables */
   --bg-color: #0d0d0d;
   --surface: #1a1a1a;
-  --accent-retro: #0055ff;
+  --accent-retro: #ffffff;
   --text-primary: #ffffff;
   --text-secondary: #999999;
   --border-color: #333333;
-  --retro-shadow: 4px 4px 0px #0055ff;
+  --retro-shadow: 4px 4px 0px #ffffff;
 }
 
-.theme-red {
-  --bg-color: #1a0000;
-  --text-primary: #ff0000;
-  --text-secondary: #aa0000;
-  --accent-retro: #ff0000;
-  --surface: #0a0000;
-  --border-color: #ff0000;
-  --retro-shadow: 6px 6px 0px #ff0000;
-}
 
-.hack-animation {
-  animation: crt-flicker 0.15s infinite, shake 5s infinite;
-}
-
-@keyframes crt-flicker {
-  0% { opacity: 0.95; }
-  50% { opacity: 1; }
-  100% { opacity: 0.95; }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  98% { transform: translateX(-2px); }
-  99% { transform: translateX(2px); }
-}
 
 .dark {
   --background: oklch(0.145 0 0);
@@ -351,7 +327,7 @@ header {
 }
 
 .window-close:hover {
-  background: rgba(0, 85, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .dot {
@@ -502,7 +478,7 @@ header {
   color: var(--text-primary) !important;
   -webkit-text-fill-color: var(--text-primary) !important;
   border: 2px solid var(--text-primary) !important;
-  box-shadow: 4px 4px 0px var(--accent-retro) !important;
+  box-shadow: 4px 4px 0px var(--bg-color) !important;
   font-family: "Space Mono", monospace !important;
   font-weight: bold !important;
   margin: 0 10px;
@@ -709,8 +685,8 @@ footer {
 
 .dossier-panel-blueprint {
   background-image: 
-    linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -746,7 +722,7 @@ footer {
 }
 
 .dossier-row:hover {
-  background: rgba(0, 255, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .dossier-row:last-child {

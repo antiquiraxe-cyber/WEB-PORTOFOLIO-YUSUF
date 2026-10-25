@@ -15,7 +15,6 @@ type TerminalEntry = { type: 'input' | 'output', text: React.ReactNode }
 
 export default function ClientPage({ projects, archives = [] }: ClientPageProps) {
   const [isBooting, setIsBooting] = useState(true)
-  const [isRedAlert, setIsRedAlert] = useState(false)
   
   const [time, setTime] = useState("")
   const [date, setDate] = useState("")
@@ -48,16 +47,6 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
   
   const prevHeroImage = () => {
     setHeroIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)
-  }
-
-  const toggleRedAlert = () => {
-    if (isRedAlert) {
-      document.body.classList.remove('theme-red');
-      setIsRedAlert(false);
-    } else {
-      document.body.classList.add('theme-red');
-      setIsRedAlert(true);
-    }
   }
 
   const handleTerminalSubmit = (e: React.FormEvent) => {
@@ -167,7 +156,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
       {isBooting ? (
         <BootScreen onComplete={() => setIsBooting(false)} />
       ) : (
-        <div className={isRedAlert ? 'hack-animation' : ''} style={{ opacity: 1, animation: 'fadeIn 0.5s ease-out', minHeight: '100vh' }}>
+        <div style={{ opacity: 1, animation: 'fadeIn 0.5s ease-out', minHeight: '100vh' }}>
           {/* Nav / Header */}
           <header>
             <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -598,31 +587,6 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
           </div>
         </div>
       )}
-
-      {/* Red Alert Toggle (Bottom Left) */}
-      <button
-        onClick={toggleRedAlert}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          left: '20px',
-          background: 'var(--surface)',
-          border: '2px solid var(--accent-retro)',
-          color: 'var(--accent-retro)',
-          fontSize: '1.5rem',
-          padding: '10px',
-          cursor: 'pointer',
-          zIndex: 99999,
-          boxShadow: '4px 4px 0px var(--accent-retro)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '0'
-        }}
-        title="Toggle Red Alert Mode"
-      >
-        ☢️
-      </button>
       </div>
       )}
     </>
