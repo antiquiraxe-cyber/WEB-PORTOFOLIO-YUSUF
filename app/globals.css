@@ -480,6 +480,20 @@ header {
   margin-bottom: 15px;
 }
 
+.project-link-btn,
+.project-repo-link {
+  display: inline-block;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.project-link-btn:hover,
+.project-repo-link:hover {
+  text-decoration: underline;
+  transform: translateX(2px);
+  color: var(--text-primary);
+}
+
 .marquee-container {
   border-top: 2px solid var(--border-color);
   border-bottom: 2px solid var(--border-color);

@@ -360,11 +360,51 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                     <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
                       {project.description}
                     </p>
-                    {project.link !== '#' && (
-                      <a href={project.link} target="_blank" rel="noreferrer" style={{marginTop: '15px', display: 'inline-block', fontSize: '0.8rem', color: 'var(--accent-retro)', textDecoration: 'none'}}>
-                        [ VIEW_DEPLOYMENT ]
-                      </a>
-                    )}
+                    <div className="project-links" style={{ marginTop: '16px', display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap', fontSize: '0.8rem' }}>
+                      {project.isDeployed && project.link && project.link !== '#' ? (
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="project-link-btn"
+                          style={{ color: 'var(--text-primary)', fontWeight: 'bold', textDecoration: 'none' }}
+                        >
+                          [ VIEW_DEPLOYMENT ]
+                        </a>
+                      ) : (
+                        <span 
+                          style={{ 
+                            color: 'var(--text-secondary)', 
+                            border: '1px dashed var(--border-color)', 
+                            padding: '2px 8px', 
+                            fontSize: '0.75rem',
+                            fontWeight: 'bold',
+                            letterSpacing: '0.5px'
+                          }}
+                        >
+                          ● NOT DEPLOYED
+                        </span>
+                      )}
+
+                      {project.github && project.github !== '#' && (
+                        <a 
+                          href={project.github} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="project-repo-link"
+                          style={{ 
+                            color: 'var(--text-primary)', 
+                            fontWeight: 'bold', 
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                        >
+                          [ GITHUB_REPO ↗ ]
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))

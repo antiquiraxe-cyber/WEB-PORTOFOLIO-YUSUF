@@ -4,6 +4,8 @@ export interface PortfolioItem {
   tags: string[];
   description: string;
   link: string;
+  github?: string;
+  isDeployed?: boolean;
   images: string[];
 }
 

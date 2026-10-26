@@ -1,5 +1,15 @@
 import { PortfolioItem } from '@/types/portfolio';
 
+function extractUrl(prop: any): string | null {
+  if (!prop) return null;
+  if (prop.url) return prop.url.trim();
+  if (prop.rich_text && prop.rich_text.length > 0) {
+    const text = prop.rich_text[0].plain_text?.trim() || prop.rich_text[0].href?.trim() || null;
+    return text;
+  }
+  return null;
+}
+
 export async function getNotionProjects(): Promise<PortfolioItem[]> {
   const secret = process.env.NOTION_SECRET;
   const databaseId = process.env.NOTION_DATABASE_ID;
@@ -29,12 +39,36 @@ export async function getNotionProjects(): Promise<PortfolioItem[]> {
     
     const projects: PortfolioItem[] = data.results.map((page: any) => {
       const props = page.properties;
+      
+      const rawLink = extractUrl(props.Link_Proyek) || extractUrl(props['Link Proyek']) || extractUrl(props.Link) || extractUrl(props.Deployment) || null;
+      const rawGithub = extractUrl(props.Github) || extractUrl(props.GitHub) || extractUrl(props.Repo) || extractUrl(props.Repository) || extractUrl(props.Link_Github) || extractUrl(props['Link Github']) || extractUrl(props['Source Code']) || extractUrl(props.Source_Code) || null;
+
+      let finalLink = rawLink;
+      let finalGithub = rawGithub;
+
+      // Smart auto-detect: if user entered a GitHub URL directly in the link column
+      if (finalLink && (finalLink.includes('github.com') || finalLink.includes('gitlab.com')) && !finalGithub) {
+        finalGithub = finalLink;
+        finalLink = null;
+      }
+
+      const statusName = props.Status?.select?.name?.toLowerCase() || '';
+      const isExplicitlyNotDeployed = 
+        statusName.includes('not deployed') || 
+        statusName.includes('wip') || 
+        statusName.includes('in dev') || 
+        props.Deployed?.checkbox === false;
+
+      const isDeployed = isExplicitlyNotDeployed ? false : Boolean(finalLink && finalLink !== '#');
+
       return {
         id: page.id,
         name: props.Name?.title[0]?.plain_text || 'Untitled',
         tags: props.Tags?.multi_select?.map((t: any) => t.name) || [],
         description: props.Deskripsi?.rich_text[0]?.plain_text || '',
-        link: props.Link_Proyek?.url || props['Link Proyek']?.url || '#',
+        link: finalLink || '#',
+        github: finalGithub || undefined,
+        isDeployed,
         images: props.Gambar?.files?.length > 0 
           ? props.Gambar.files.map((fileObj: any) => fileObj?.file?.url || fileObj?.external?.url || fileObj?.name) 
           : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f']
