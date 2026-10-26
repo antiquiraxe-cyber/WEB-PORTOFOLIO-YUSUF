@@ -135,13 +135,17 @@
     padding: 0;
     box-sizing: border-box;
   }
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
   body {
     @apply bg-background text-foreground;
     /* Override with retro portfolio styles */
     background-color: var(--bg-color) !important;
     color: var(--text-primary) !important;
     font-family: "Space Mono", monospace !important;
-    overflow-x: hidden;
     background-image: radial-gradient(circle, #c5c4bf 1px, transparent 1px);
     background-size: 24px 24px;
   }
@@ -244,6 +248,9 @@ header {
   box-shadow: var(--retro-shadow);
   background: var(--surface);
   padding: 4px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .window-header {
@@ -256,6 +263,27 @@ header {
   font-weight: 700;
   font-size: 0.8rem;
   margin-bottom: 4px;
+}
+
+.window-header span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 60px);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 20px;
 }
 
 /* Added proper window control button styles matching retro UI */
@@ -753,6 +781,8 @@ footer {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Timeline */
@@ -812,6 +842,71 @@ footer {
   font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+/* Archive Responsive Container */
+.archive-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+  width: 100%;
+}
+
+/* Contact Card Responsive Styles */
+.contact-card-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.contact-field-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.contact-field-textarea {
+  align-items: flex-start;
+}
+
+.contact-label {
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.contact-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  outline: none;
+  padding: 4px 0;
+}
+
+.contact-textarea {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  padding: 10px;
+  outline: none;
+  resize: vertical;
+}
+
+.contact-submit-btn {
+  align-self: flex-start;
+  margin-top: 10px;
 }
 /* Gallery Modal */
 .gallery-modal {
@@ -918,6 +1013,26 @@ footer {
     padding: 15px;
   }
 
+  .header-inner {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .hero-actions .btn-retro {
+    width: 100%;
+    text-align: center;
+  }
+
   .hero-image-container {
     height: 400px;
   }
@@ -1018,12 +1133,62 @@ footer {
     grid-template-columns: 1fr;
     gap: 20px;
     margin-bottom: 50px;
+    width: 100%;
+  }
+
+  .project-card {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .dossier-grid {
     grid-template-columns: 1fr;
     gap: 20px;
     margin: 20px 0 40px 0;
+    width: 100%;
+  }
+
+  .dossier-panel {
+    padding: 20px 15px;
+    box-shadow: 3px 3px 0px var(--border-color);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .archive-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding: 8px 4px;
+  }
+
+  .archive-table-container table {
+    min-width: 460px;
+  }
+
+  .contact-card-content {
+    padding: 20px 15px;
+    gap: 15px;
+  }
+
+  .contact-field-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-submit-btn {
+    width: 100%;
+    text-align: center;
   }
 
   .project-card:hover {

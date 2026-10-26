@@ -67,12 +67,14 @@ export default function AsciiCube() {
   return (
     <pre style={{ 
       fontFamily: '"Space Mono", monospace', 
-      fontSize: '10px', 
-      lineHeight: '10px', 
+      fontSize: 'clamp(7px, 2.2vw, 10px)', 
+      lineHeight: 'clamp(7px, 2.2vw, 10px)', 
       color: 'var(--accent-retro)', 
       margin: 0, 
       opacity: 0.8,
-      overflow: 'hidden'
+      overflow: 'hidden',
+      maxWidth: '100%',
+      userSelect: 'none'
     }}>
       {frame}
     </pre>

@@ -159,7 +159,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
         <div style={{ opacity: 1, animation: 'fadeIn 0.5s ease-out', minHeight: '100vh' }}>
           {/* Nav / Header */}
           <header>
-            <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div className="header-inner container">
               <div className="logo">Sakha Yusuf Portofolio</div>
               <nav className="nav-links">
                 <a href="#work">PROJECTS</a>
@@ -188,7 +188,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
             <p>
               Bridging the gap between a blank canvas and a live website. I’m a generalist web developer focused on building interactive, clean, and engaging web experiences.
             </p>
-            <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', marginTop: '20px' }}>
+            <div className="hero-actions">
               <a href="#work" className="btn-retro">
                 EXPLORE FILES
               </a>
@@ -340,7 +340,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                       </button>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', overflowX: 'auto', snapType: 'x mandatory' }}>
+                  <div style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory' }}>
                     {project.images?.map((img, i) => (
                       <img
                         key={i}
@@ -453,7 +453,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                 <div className="dot"></div><div className="dot"></div><div className="dot"></div>
               </div>
             </div>
-            <div style={{ overflowX: 'auto', padding: '10px' }}>
+            <div className="archive-table-container">
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontFamily: '"Space Mono", monospace' }}>
                 <thead>
                   <tr style={{ borderBottom: '2px solid var(--text-secondary)', color: 'var(--accent-retro)' }}>
@@ -496,23 +496,23 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
                   <button className="window-btn window-close" aria-label="Close"><span className="close-icon"></span></button>
                 </div>
              </div>
-             <div style={{ padding: '30px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+             <div className="contact-card-content">
                 <p style={{ color: 'var(--accent-retro)' }}>{"> INITIATING SECURE CONNECTION..."}</p>
                 {contactStatus === 'success' && <p style={{ color: '#00ff00' }}>{"> TRANSMISSION_SUCCESSFUL: Packet delivered to inbox."}</p>}
                 {contactStatus === 'error' && <p style={{ color: 'red' }}>{"> TRANSMISSION_FAILED: Error reaching destination."}</p>}
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <span>guest@system:~$</span>
-                  <input type="text" placeholder="Your Name" value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})} style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--border-color)', color: 'var(--text-primary)', flex: 1, minWidth: '200px', fontFamily: 'inherit', outline: 'none' }} />
+                <div className="contact-field-row">
+                  <span className="contact-label">guest@system:~$</span>
+                  <input type="text" placeholder="Your Name" value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})} className="contact-input" />
                 </div>
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <span>guest@system:~$</span>
-                  <input type="email" placeholder="Your Email" value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})} style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--border-color)', color: 'var(--text-primary)', flex: 1, minWidth: '200px', fontFamily: 'inherit', outline: 'none' }} />
+                <div className="contact-field-row">
+                  <span className="contact-label">guest@system:~$</span>
+                  <input type="email" placeholder="Your Email" value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})} className="contact-input" />
                 </div>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                  <span>guest@system:~$</span>
-                  <textarea placeholder="Message Payload" rows={4} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} style={{ background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-primary)', flex: 1, minWidth: '200px', fontFamily: 'inherit', padding: '10px', outline: 'none', resize: 'vertical' }}></textarea>
+                <div className="contact-field-row contact-field-textarea">
+                  <span className="contact-label">guest@system:~$</span>
+                  <textarea placeholder="Message Payload" rows={4} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} className="contact-textarea"></textarea>
                 </div>
-                <button className="btn-retro" style={{ alignSelf: 'flex-start', marginTop: '10px', opacity: contactStatus === 'submitting' ? 0.5 : 1 }} onClick={handleContactSubmit} disabled={contactStatus === 'submitting'}>
+                <button className="btn-retro contact-submit-btn" onClick={handleContactSubmit} disabled={contactStatus === 'submitting'}>
                   {contactStatus === 'submitting' ? 'TRANSMITTING...' : 'TRANSMIT_PACKET'}
                 </button>
              </div>
