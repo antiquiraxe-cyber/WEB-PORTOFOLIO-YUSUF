@@ -321,7 +321,7 @@ export default function ClientPage({ projects, archives = [] }: ClientPageProps)
 
         {/* Portfolio */}
         <section id="work">
-          <h2 className="section-title">Latest Deployments</h2>
+          <h2 className="section-title">Latest Projects</h2>
           <div className="portfolio-grid">
             {projects.length > 0 ? (
               projects.map((project, index) => (
